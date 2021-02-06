@@ -587,7 +587,7 @@ namespace Newtonsoft.Json
         /// A JSON string representation of the object.
         /// </returns>
         [DebuggerStepThrough]
-        public static string SerializeObject(object? value, JsonSerializerSettings settings)
+        public static string SerializeObject(object? value, JsonSerializerSettings? settings)
         {
             return SerializeObject(value, null, settings);
         }
@@ -768,9 +768,7 @@ namespace Newtonsoft.Json
         [DebuggerStepThrough]
         public static T? DeserializeObject<T>(string value, params JsonConverter[] converters)
         {
-#pragma warning disable CS8601 // Possible null reference assignment.
-            return (T)DeserializeObject(value, typeof(T), converters);
-#pragma warning restore CS8601 // Possible null reference assignment.
+            return (T?)DeserializeObject(value, typeof(T), converters);
         }
 
         /// <summary>
@@ -786,9 +784,7 @@ namespace Newtonsoft.Json
         [DebuggerStepThrough]
         public static T? DeserializeObject<T>(string value, JsonSerializerSettings? settings)
         {
-#pragma warning disable CS8601 // Possible null reference assignment.
-            return (T)DeserializeObject(value, typeof(T), settings);
-#pragma warning restore CS8601 // Possible null reference assignment.
+            return (T?)DeserializeObject(value, typeof(T), settings);
         }
 
         /// <summary>
